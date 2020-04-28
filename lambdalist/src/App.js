@@ -1,8 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import './App.css';
-import SignUp from './Components/SignUp';
-import Login from './Components/Login';
+import React from "react";
+import "./App.css";
+import NavBar from "./Components/NavBar";
+import PrivateRoute from "./Components/PrivateRoute";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import ToDoList from "./Components/ToDoList";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
 import particles from './particles.json';
 import Styled from 'styled-components';
 import ToDoList from './Components/ToDoList';
@@ -10,13 +13,24 @@ import ToDoForm from './Components/ToDoForm';
 import Header from './Components/Header';
 
 function App() {
-	return (
-		<div className="Container">
-			<SignUp />
-			<Login />
-			<ToDoForm />
-			<ToDoList />
-		</div>
-	);
+  return (
+    <div className="App">
+      <header>
+        <NavBar />
+      </header>
+      <section className="section">
+        <h1> Lambda List </h1>
+      </section>
+      <Router>
+        <Switch>
+          <PrivateRoute exact path="/todolist" component={ToDoList} />
+        </Switch>
+      </Router> 
+       <SignUp />
+        <Login />
+    </div>
+    
+  );
+}
 
 export default App;
