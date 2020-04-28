@@ -8,7 +8,12 @@ const initialProfile = {
 
 export default function Profile() {
   const [profile, setProfile] = useState(initialProfile);
-  const [profileValues, setProfileValues] = useState("");
+  const [nameValue, setNameValue] = useState("");
+  const [formValues, setFormValues]= useState({
+    username:"",
+    password: "",
+    email: "",
+  })
 
    const handleChange = (event) => {
     setValues({
