@@ -1,13 +1,13 @@
-import React, from 'react';
+import React from 'react';
 
 
 const ToDoList = () => {
 
 	return (
 		<div>
-				<ul className="list">
-				</ul>
-				
+			<ul className="list">
+			</ul>
+
 		</div>
 	);
 };

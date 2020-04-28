@@ -4,11 +4,11 @@ import useForm from './useForm';
 import Validate from './Validate';
 
 function Login() {
-    const { handleChange, handleSubmit, values, errors } = useForm(submit, Validate); // This deconstructs useForm and passes in the submit function as a callback.
+  const { handleChange, handleSubmit, values, errors } = useForm(submit, Validate); // This deconstructs useForm and passes in the submit function as a callback.
 
-    function submit() {
-        console.log('Submitted successfully.')
-    }
+  function submit() {
+    console.log('Submitted successfully.')
+  }
   return (
     <div>
       <form onSubmit={handleSubmit} noValidate>
@@ -26,7 +26,7 @@ function Login() {
             {errors.password && <p>{errors.password}</p>}
           </div>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );

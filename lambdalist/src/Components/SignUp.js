@@ -22,7 +22,7 @@ function SignUp() {
               name="firstName"
               type="text"
               placeholder="First Name"
-              value={values.email}
+              value={values.firstname}
               onChange={handleChange}
             />
             {errors.email && <p>{errors.email}</p>}
@@ -35,7 +35,7 @@ function SignUp() {
               name="lastName"
               type="text"
               placeholder="Last Name"
-              value={values.email}
+              value={values.lastname}
               onChange={handleChange}
             />
             {errors.email && <p>{errors.email}</p>}

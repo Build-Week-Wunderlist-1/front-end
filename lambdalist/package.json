@@ -9,17 +9,10 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
-=======
     "react-scripts": "3.4.1",
-<<<<<<< HEAD
     "react-uuid": "^1.0.2",
     "uuid": "^7.0.3"
-=======
-    "styled-components": "^5.1.0"
->>>>>>> 5bf8514963a219f72b7a8601a3c7cebd2fb1a8f0
   },
   "scripts": {
     "start": "react-scripts start",
