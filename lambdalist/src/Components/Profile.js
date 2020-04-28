@@ -8,6 +8,14 @@ const initialProfile = {
 
 export default function Profile() {
   const [profile, setProfile] = useState(initialProfile);
+  const [profileValues, setProfileValues] = useState("");
+
+   const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <div>
@@ -15,7 +23,7 @@ export default function Profile() {
         <label>
           Username:
           <input
-            onChange={onInputChange}
+            onChange={handleChange}
             value={}
             name="username"
             type="text"
@@ -24,7 +32,7 @@ export default function Profile() {
         <label>
           Password:
           <input
-            onChange={onInputChange}
+            onChange={handleChange}
             value={}
             name="username"
             type="password"
@@ -32,7 +40,7 @@ export default function Profile() {
         </label>
         <label>
           email:
-          <input onChange={onInputChange} value={} name="email" type="text" />
+          <input onChange={handleChange} value={} name="email" type="text" />
         </label>
       </form>
     </div>
