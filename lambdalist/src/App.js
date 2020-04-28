@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
@@ -10,7 +11,7 @@ import Header from './Components/Header';
 
 function App() {
 	return (
-		<div className="App">
+		<div className="Container">
 			<SignUp />
 			<Login />
 			<ToDoForm />

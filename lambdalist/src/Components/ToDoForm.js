@@ -1,25 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const ToDoForm = () => {
- 
-  return (
-    <form  className="form">
-      <input
-        type="text"
-        placeholder="Add ToDo..."
-        required
-        className="ToDo-input"
-      />
-      <div className="buttons">
-        <button type="submit" className="btn add-ToDo-btn">
-            Add To Do
-        </button>
-        <button className="btn clear-btn">
-          Clear
-        </button>
-      </div>
+export function TodoForm (props) {
+    const [form, setForm] = useState('')
+   return(
+
+    <form onSubmit={(event) => {
+        event.preventDefault()
+        props.addTodo(form)
+        setForm('')
+    }}>
+        <input 
+            name='todo'
+            placeholder='Add Todo'
+            value={form}
+            onChange={(event) => {
+                setForm(event.target.value)
+            }}
+        />
+        <button type='submit'>Add Todo</button>
     </form>
-  )
+   )
 }
-
-export default ToDoForm
