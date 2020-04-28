@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  height: 60px;
+}
+
+ul {
+  display: flex;
+  justify-content: row;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+li {
+  list-style: none;
+  background-color: #611c35;
+  width: 100px;
+  border: solid black;
+  border-radius: 25px;
+}
+
+li:hover {
+  background-color: #d7e8ba;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: #ffe699;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d7e8ba;
+  height: 400px;
+  font-family: "Marck Script", cursive;
+  font-size: 2rem;
+  border-top: solid 5px #611c35;
+  border-bottom: solid 5px #611c35;
+  background-image: url("./pictureOne.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
