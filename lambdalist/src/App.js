@@ -6,11 +6,8 @@ import particles from './particles.json';
 import Styled from 'styled-components';
 
 function App() {
-  {const particlesJS = {};}
   return (
-    
-      
-      <div className="App">
+    <div className="App">
         <SignUp />
         <Login />
       </div>
