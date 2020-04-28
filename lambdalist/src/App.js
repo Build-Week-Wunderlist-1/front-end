@@ -17,6 +17,5 @@ function App() {
 			<ToDoList />
 		</div>
 	);
-}
 
 export default App;
