@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import useForm from "./useForm";
 import Validate from "./Validate";
-import axiosWithAuth from "../utils/axiosWithAuth";
 
 const SignUp = () => {
   const { handleChange, handleSubmit, values, errors } = useForm(
