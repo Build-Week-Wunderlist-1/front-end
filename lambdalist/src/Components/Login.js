@@ -1,43 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
-import useForm from './useForm';
-import Validate from './Validate';
-import Profile from "../Components/Profile"
-import axiosWithAuth from "../utils/axiosWithAuth"
+import useForm from "./useForm";
+import Validate from "./Validate";
 
+const Login = () => {
+  const { handleChange, handleSubmit, values, errors } = useForm(
+    submit,
+    Validate
+  ); // This deconstructs useForm and passes in the submit function as a callback.
 
-const initialState = {
-  username: "",
-  password: ""
-}
-
-
-const Login = props => {
-  // const { handleChange, handleSubmit, values, errors } = useForm(submit, Validate); // This deconstructs useForm and passes in the submit function as a callback.
-
-  const [login, setLogin] = useState(initialState)
-
-  const handleChange = e => {
-    setLogin({ ...login, [e.target.name]: e.target.value })
-  }
-
-
-
-  const handleSubmit = e => {
-    axiosWithAuth()
-      .post("api/auth/login/", login)
-      .then(res => {
-        localStorage.setItem("token", res.data.message);
-        props.history.push("/todolist")
+  function submit() {
+    axios
+      .post("https://lambdawunderlist.herokuapp.com/api/auth/login", values)
+      .then((res) => {
+        console.log("Success!", res);
       })
-      .catch(err => {
-        console.log("LOGIN-ERROR", err)
-      })
-    // console.log('Submitted successfully.')
+      .catch((err) => {
+        console.log(err.response);
+      });
   }
-
-
-
 
   return (
     <div>
@@ -45,35 +26,31 @@ const Login = props => {
         <div>
           <label>Username</label>
           <div>
-            <input name="username" type="username" onChange={handleChange} value={login.username} />
-            {/* {errors.username && <p>{errors.username}</p>} */}
+            <input
+              name="username"
+              type="username"
+              onChange={handleChange}
+              value={login.username}
+            />
+            {errors.username && <p>{errors.username}</p>}
           </div>
         </div>
         <div>
           <label>Password</label>
           <div>
-            <input name="password" type="password" onChange={handleChange} value={login.password} />
-            {/* {errors.password && <p>{errors.password}</p>} */}
+            <input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              value={login.password}
+            />
+            {errors.password && <p>{errors.password}</p>}
           </div>
         </div>
-<<<<<<< HEAD
-        <button type="submit">Login</button>
-=======
         <button type="submit">Log in</button>
->>>>>>> eb6406c71b25060972553a59e3360cdfad38856d
       </form>
-      <Profile />
     </div>
   );
-}
+};
 
 export default Login;
-
-
-
-{/* <input name="username" type="username" value={values.username} onChange={handleChange} />
-   {errors.username && <p>{errors.username}</p>} */}
-
-
-// <input name="password" type="password" value={values.password} onChange={handleChange} />
-// { errors.password && <p>{errors.password}</p> }
