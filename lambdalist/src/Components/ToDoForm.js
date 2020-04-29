@@ -12,7 +12,7 @@ const ToDoForm = (props) => {
         e.preventDefault()
         if (!editItem) {
             addTodo(title)
-            setTitle(title)
+            setTitle("")
         } else {
             editToDo(title, editItem.id)
         }
