@@ -1,23 +1,64 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { ToDoListContext } from "../ToDoListContext"
 
-export function TodoForm (props) {
-    const [form, setForm] = useState('')
-   return(
 
-    <form onSubmit={(event) => {
-        event.preventDefault()
-        props.addTodo(form)
-        setForm('')
-    }}>
-        <input 
-            name='todo'
-            placeholder='Add Todo'
-            value={form}
-            onChange={(event) => {
-                setForm(event.target.value)
-            }}
-        />
-        <button type='submit'>Add Todo</button>
-    </form>
-   )
+
+
+const ToDoForm = (props) => {
+    const { addTodo, clearToDo, editTodo } = useContext(ToDoListContext)
+    const [title, setTitle] = useState('')
+
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        if (!editItem) {
+            addTodo(title)
+            setTitle(title)
+        } else {
+            editTodo(title, editItem.id)
+        }
+    }
+
+    const handleChange = e => {
+        setTitle(e.target.value)
+    }
+
+    useEffect(() => {
+        if (editItem) {
+            setTitle(editItem.title)
+            console.log(editItem)
+        } else {
+            setTitle("")
+        }
+    }, [editItem])
+
+
+
+
+    return (
+        <form onSubmit={handleSubmit} className="form">
+            <input
+                type="text"
+                placeholder="Add Todo..."
+                value={title}
+                onChange={handleChange}
+                required
+                className="Todo-input"
+            />
+            <div className="buttons">
+                <button type="submit" className="btn add-Todo-btn">
+                    {editItem ? 'Edit Todo' : 'Add Todo'}
+                </button>
+                <button className="btn clear-btn" onClick={clearList}>
+                    Clear
+        </button>
+            </div>
+        </form>
+    )
+
 }
+
+export default ToDoForm;
+
+
+
