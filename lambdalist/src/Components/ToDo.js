@@ -1,15 +1,20 @@
-import React, from 'react';
+import React from 'react';
 
 
-const ToDoList = () => {
+const ToDo = ({ todo }) => {
 
 	return (
 		<div>
-				<ul className="list">
-				</ul>
-				
+			<li className="list-item">
+				<span>{todo.title}</span>
+				<div>
+					<button className="btn-delete-todo">Delete</button>
+					<button className="btn-edit-todo">Edit</button>
+				</div>
+			</li>
+
 		</div>
 	);
 };
 
-export default ToDoList;
+export default ToDo;
