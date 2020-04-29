@@ -10,37 +10,30 @@ function SignUp() {
   ); // This deconstructs useForm and passes in the submit function as a callback.
 
   function submit() {
-    console.log("Submitted successfully.");
+    axios.post("https://lambdawunderlist.herokuapp.com/api/auth/register", values)
+    .then(res => {
+        console.log("Success!", res);
+    })
+    .catch(err => {
+        console.log(err.response);
+    })
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <label></label>
-          <div>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="First Name"
-              value={values.email}
-              onChange={handleChange}
-            />
-            {errors.email && <p>{errors.email}</p>}
-          </div>
-        </div>
-        <div>
-          <label></label>
-          <div>
-            <input
-              name="lastName"
-              type="text"
-              placeholder="Last Name"
-              value={values.email}
-              onChange={handleChange}
-            />
-            {errors.email && <p>{errors.email}</p>}
-          </div>
-        </div>
+      <div>
+      <label>Username</label>
+      <div>
+        <input
+          name="username"
+          type="text"
+          value={values.username}
+          onChange={handleChange}
+        />
+        {errors.email && <p>{errors.username}</p>}
+      </div>
+    </div>
         <div>
           <label>Email</label>
           <div>

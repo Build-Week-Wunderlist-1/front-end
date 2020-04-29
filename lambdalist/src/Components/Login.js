@@ -26,7 +26,7 @@ function Login() {
             {errors.password && <p>{errors.password}</p>}
           </div>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
