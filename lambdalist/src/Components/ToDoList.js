@@ -4,6 +4,7 @@ import { ToDoListContext } from "../ToDoListContext"
 import ToDo from "./ToDo"
 
 const ToDoList = () => {
+<<<<<<< HEAD
   const { todos } = useContext(ToDoListContext);
 
   return (
@@ -13,6 +14,13 @@ const ToDoList = () => {
           return <ToDo todo={todo} key={todo.id} />
         })}
       </ul>
+=======
+
+  return (
+    <div>
+
+      <ul className="list"></ul>
+>>>>>>> eb6406c71b25060972553a59e3360cdfad38856d
     </div>
   );
 };
