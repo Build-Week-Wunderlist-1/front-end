@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth"
+// import { axiosWithAuth } from "../utils/axiosWithAuth"
 import { ToDoListContext } from "../ToDoListContext"
 import ToDo from "./ToDo"
 
@@ -8,13 +8,20 @@ const ToDoList = () => {
 
   return (
     <div>
-      <ul className="list">
-        {todos.map(todo => {
-          return <ToDo todo={todo} key={todo.id} />
-        })}
-      </ul>
+      {
+        todos.length ? (
+          <ul className="list">
+            {todos.map(todo => {
+              return <todo todo={todo} key={todo.id} />;
+            })}
+          </ul>
+        ) : (
+            <div className="no-todos">No todos</div>
+          )
+      }
     </div>
   );
 };
 
 export default ToDoList;
+

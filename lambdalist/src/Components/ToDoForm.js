@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { ToDoListContext } from "../context/ToDoListContext"
-
+import { ToDoListContext } from "../ToDoListContext";
 
 
 
 const ToDoForm = (props) => {
-    const { addTodo, clearToDo, editToDo, editItem } = useContext(ToDoListContext)
+    const { addTodo, clearList, editToDo, editItem } = useContext(ToDoListContext)
     const [title, setTitle] = useState('')
 
 
@@ -13,7 +12,7 @@ const ToDoForm = (props) => {
         e.preventDefault()
         if (!editItem) {
             addTodo(title)
-            setTitle(title)
+            setTitle("")
         } else {
             editToDo(title, editItem.id)
         }
