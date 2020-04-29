@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import useForm from "./useForm";
 import Validate from "./Validate";
-import axiosWithAuth from "../utils/axiosWithAuth"
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const SignUp = () => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -11,13 +11,14 @@ const SignUp = () => {
   ); // This deconstructs useForm and passes in the submit function as a callback.
 
   function submit() {
-    axios.post("https://lambdawunderlist.herokuapp.com/api/auth/register", values)
-    .then(res => {
+    axios
+      .post("https://lambdawunderlist.herokuapp.com/api/auth/register", values)
+      .then((res) => {
         console.log("Success!", res);
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         console.log(err.response);
-    })
+      });
   }
 
   return (
@@ -66,6 +67,6 @@ const SignUp = () => {
       </form>
     </div>
   );
-}
+};
 
 export default SignUp;
