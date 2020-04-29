@@ -3,11 +3,17 @@ import axios from "axios";
 import useForm from './useForm';
 import Validate from './Validate';
 
-function Login() {
+const Login = () => {
     const { handleChange, handleSubmit, values, errors } = useForm(submit, Validate); // This deconstructs useForm and passes in the submit function as a callback.
 
     function submit() {
-        console.log('Submitted successfully.')
+      axios.post("https://lambdawunderlist.herokuapp.com/api/auth/login", values)
+      .then(res => {
+          console.log("Success!", res);
+      })
+      .catch(err => {
+          console.log(err.response);
+      })
     }
   return (
     <div>

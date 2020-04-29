@@ -3,7 +3,7 @@ import axios from "axios";
 import useForm from "./useForm";
 import Validate from "./Validate";
 
-function SignUp() {
+const SignUp = () => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submit,
     Validate
@@ -63,16 +63,5 @@ function SignUp() {
     </div>
   );
 }
-
-// form
-// label / input for email
-// label / input for password
-// signup button
-
-// handle changes
-// handle submit
-
-// handle errors
-// show errors if there are errors
 
 export default SignUp;
