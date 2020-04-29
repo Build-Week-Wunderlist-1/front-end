@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import useForm from "./useForm";
 import Validate from "./Validate";
+import axiosWithAuth from "../utils/axiosWithAuth"
 
 const SignUp = () => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -22,24 +23,26 @@ const SignUp = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} noValidate>
-      <div>
-      <label>Username</label>
-      <div>
-        <input
-          name="username"
-          type="text"
-          value={values.username}
-          onChange={handleChange}
-        />
-        {errors.email && <p>{errors.username}</p>}
-      </div>
-    </div>
+        <div>
+          <label>Username</label>
+          <div>
+            <input
+              name="username"
+              type="text"
+              placeholder="username"
+              value={values.username}
+              onChange={handleChange}
+            />
+            {errors.username && <p>{errors.username}</p>}
+          </div>
+        </div>
         <div>
           <label>Email</label>
           <div>
             <input
               name="email"
               type="email"
+              placeholder="email"
               value={values.email}
               onChange={handleChange}
             />
@@ -50,6 +53,7 @@ const SignUp = () => {
           <label>Password</label>
           <div>
             <input
+              placeholder="password"
               name="password"
               type="password"
               value={values.password}
