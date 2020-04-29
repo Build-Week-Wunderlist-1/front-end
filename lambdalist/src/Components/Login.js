@@ -1,56 +1,59 @@
-import React, { useState } from "react";
-import axios from "axios";
-import useForm from "./useForm";
-import Validate from "./Validate";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 
 const Login = () => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
-    submit,
-    Validate
-  ); // This deconstructs useForm and passes in the submit function as a callback.
+	const history = useHistory();
 
-  function submit() {
-    axios
-      .post("https://lambdawunderlist.herokuapp.com/api/auth/login", values)
-      .then((res) => {
-        console.log("Success!", res);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  }
+	const [ credentials, setCredentials ] = useState({
+		username: '',
+		password: ''
+	});
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <label>Username</label>
-          <div>
-            <input
-              name="username"
-              type="username"
-              onChange={handleChange}
-              value={values.username}
-            />
-            {errors.username && <p>{errors.username}</p>}
-          </div>
-        </div>
-        <div>
-          <label>Password</label>
-          <div>
-            <input
-              name="password"
-              type="password"
-              onChange={handleChange}
-              value={values.password}
-            />
-            {errors.password && <p>{errors.password}</p>}
-          </div>
-        </div>
-        <button type="submit">Log in</button>
-      </form>
-    </div>
-  );
+	const handleChange = (event) => {
+		setCredentials({ ...credentials, [event.target.name]: event.target.value });
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log('Login was pushed');
+		axiosWithAuth()
+			.post('api/auth/login/', credentials)
+			.then((response) => {
+				console.log('Response --> ', response);
+				localStorage.setItem('token', JSON.stringify(response.data.payload));
+				history.push('/protected');
+			})
+			.catch((error) => {
+				console.log('Post error ', error);
+			});
+	};
+
+	return (
+		<div>
+			<form onSubmit={handleSubmit}>
+				<label> Username </label> 
+				<input
+					name="username"
+					type="text"
+					placeholder="username"
+					value={credentials.username}
+					onChange={handleChange}
+				/>
+
+				<label >Password </label>
+				<input
+					name="password"
+					type="text"
+					placeholder="password"
+					value={credentials.password}
+					onChange={handleChange}
+				/>
+
+				<button type="submit">Log in</button>
+			</form>
+		</div>
+	);
 };
 
 export default Login;
