@@ -22,10 +22,15 @@ const ToDoListContextProvider = (props) => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
 
+    //clearList 
+    const clearList = () => {
+        setTodos([])
+    }
+
 
 
     return (
-        <ToDoListContext.Provider value={{ todos, addTodo, removeTodo }}>
+        <ToDoListContext.Provider value={{ todos, addTodo, removeTodo, clearList }}>
             {props.children}
         </ToDoListContext.Provider>
     )

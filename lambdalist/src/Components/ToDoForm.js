@@ -4,7 +4,7 @@ import { ToDoListContext } from "../ToDoListContext";
 
 
 const ToDoForm = (props) => {
-    const { addTodo, clearToDo, editToDo, editItem } = useContext(ToDoListContext)
+    const { addTodo, clearList, editToDo, editItem } = useContext(ToDoListContext)
     const [title, setTitle] = useState('')
 
 
@@ -49,9 +49,9 @@ const ToDoForm = (props) => {
                 <button type="submit" className="btn add-Todo-btn">
                     {editItem ? 'Edit Todo' : 'Add Todo'}
                 </button>
-                {/* <button className="btn clear-btn" onClick={clearList}>
+                <button className="btn clear-btn" onClick={clearList}>
                     Clear
-        </button> */}
+        </button>
             </div>
         </form>
     )
