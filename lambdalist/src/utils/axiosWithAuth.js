@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "./node_modules/axios"
 export const axiosWithAuth = () => {
     const token = window.localStorage.getItem('token')
     return axios.create({

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from '../Utils/axiosWithAuth';
+import { axiosWithAuth } from "../Utils/axiosWithAuth"
 
 const Login = () => {
 	const history = useHistory();
 
-	const [ credentials, setCredentials ] = useState({
+	const [credentials, setCredentials] = useState({
 		username: '',
 		password: ''
 	});
@@ -32,7 +32,7 @@ const Login = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<label> Username </label> 
+				<label> Username </label>
 				<input
 					name="username"
 					type="text"

@@ -10,34 +10,34 @@ import ToDoList from './Components/ToDoList';
 import ToDoListContextProvider from './ToDoListContext';
 
 function App() {
-	return (
-		<Router>
-			<ToDoListContextProvider>
-				<div className="App">
-					<div className="container">
-						<div className="app-wrapper">
-							<header>
-								<NavBar />
-							</header>
-							<div className="main">
-								<SignUp />
-								<Login />
+  return (
+    <Router>
+      <ToDoListContextProvider>
+        <div className="App">
+          <div className="container">
+            <div className="app-wrapper">
+              <header>
+                <NavBar />
+              </header>
+              <div className="main">
+                <SignUp />
+                <Login />
 
-								<Switch>
-									<PrivateRoute exact path="/ToDoList" component={ToDoList} />
-									<PrivateRoute exact path="/ToDoForm" component={ToDoForm} />
-								</Switch>
+                <Switch>
+                  <PrivateRoute exact path="/ToDoList" component={ToDoList} />
+                  <PrivateRoute exact path="/ToDoForm" component={ToDoForm} />
+                </Switch>
 
-								<section className="section">
-									<h1> Lambda List </h1>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
-			</ToDoListContextProvider>
-		</Router>
-	);
+                <section className="section">
+                  <h1> Lambda List </h1>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ToDoListContextProvider>
+    </Router>
+  );
 }
 
 export default App;
