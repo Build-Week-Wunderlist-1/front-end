@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+// import { useHistory } from "react-router-dom";
 
-export default function Profile() {
+const Profile = () => {
+  // const { push } = useHistory();
 
   const [profile, setProfile] = useState({
     username: "",
@@ -23,7 +25,7 @@ export default function Profile() {
     axiosWithAuth()
       .post("end-point", profile)
       .then(res => {
-        props.history.push("/todolist")
+        // push("/todolist")
       })
       .catch(err => console.log("PROFILE-ERROR:", err))
   }
@@ -73,3 +75,5 @@ export default function Profile() {
     </div>
   );
 }
+
+export default Profile;

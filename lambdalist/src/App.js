@@ -22,12 +22,13 @@ function App() {
         <h1> Lambda List </h1>
       </section>
       <Router>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
         <Switch>
           <PrivateRoute exact path="/todolist" component={ToDoList} />
         </Switch>
       </Router>
-      <SignUp />
-      <Login />
+
     </div>
 
   );

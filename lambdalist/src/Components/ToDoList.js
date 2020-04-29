@@ -1,12 +1,13 @@
 import React from "react";
 
-const TaskList = () => {
+const ToDoList = () => {
 
   return (
     <div>
-        <ul className="list"></ul>
+
+      <ul className="list"></ul>
     </div>
   );
 };
 
-export default TaskList;
+export default ToDoList;
