@@ -1,7 +1,7 @@
 // login/ sign up / sign out
 
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 
 const NavBar = () => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import NavBar from './Components/NavBar';
-import PrivateRoute from './Components/PrivateRoute';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import SignUp from './Components/SignUp';
-import Login from './Components/Login';
-import ToDoForm from './Components/ToDoForm';
-import ToDoList from './Components/ToDoList';
+import NavBar from './components/NavBar';
+import PrivateRoute from './components/PrivateRoute';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import ToDoForm from './components/ToDoForm';
+import ToDoList from './components/ToDoList';
 import ToDoListContextProvider from './ToDoListContext';
+import Login from './components/Login';
 
 function App() {
 	return (
