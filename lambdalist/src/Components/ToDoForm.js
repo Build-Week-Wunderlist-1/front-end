@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { ToDoListContext } from "../context/ToDoListContext"
-
+import { ToDoListContext } from "../ToDoListContext";
 
 
 
@@ -50,9 +49,9 @@ const ToDoForm = (props) => {
                 <button type="submit" className="btn add-Todo-btn">
                     {editItem ? 'Edit Todo' : 'Add Todo'}
                 </button>
-                <button className="btn clear-btn" onClick={clearList}>
+                {/* <button className="btn clear-btn" onClick={clearList}>
                     Clear
-        </button>
+        </button> */}
             </div>
         </form>
     )
