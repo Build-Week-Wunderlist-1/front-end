@@ -30,7 +30,7 @@ const Login = () => {
               name="username"
               type="username"
               onChange={handleChange}
-              value={login.username}
+              value={values.username}
             />
             {errors.username && <p>{errors.username}</p>}
           </div>
@@ -42,7 +42,7 @@ const Login = () => {
               name="password"
               type="password"
               onChange={handleChange}
-              value={login.password}
+              value={values.password}
             />
             {errors.password && <p>{errors.password}</p>}
           </div>
