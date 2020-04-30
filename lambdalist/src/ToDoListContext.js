@@ -9,7 +9,9 @@ export const ToDoListContext = createContext()
 const ToDoListContextProvider = (props) => {
     const initialState = JSON.parse(localStorage.getItem('todos')) || []
     const [todos, setTodos] = useState(initialState)
-    console.log("localStorage.getItem(token)", localStorage.getItem("token"))
+    // console.log("localStorage.getItem(token)", localStorage.getItem("token"))
+    const [title, setTitle] = useState('')
+    const [newTodo, setNewTodo] = useState("")
 
     //edit Todo
     // const [editItem, setEditItem] = useState(false)
@@ -38,7 +40,7 @@ const ToDoListContextProvider = (props) => {
 
 
     return (
-        <ToDoListContext.Provider value={{ todos, setTodos, removeTodo, clearList, }}>
+        <ToDoListContext.Provider value={{ todos, setTodos, removeTodo, clearList, title, setTitle, newTodo, setNewTodo }}>
             {props.children}
             <ToDoList />
 

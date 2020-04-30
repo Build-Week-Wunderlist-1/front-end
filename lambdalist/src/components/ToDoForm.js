@@ -5,9 +5,8 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const ToDoForm = (props) => {
-    const { clearList, todos, setTodos } = useContext(ToDoListContext)
-    const [title, setTitle] = useState('')
-    const [newTodo, setNewTodo] = useState("")
+    const { clearList, todos, setTodos, newTodo, setNewTodo, title, setTitle, } = useContext(ToDoListContext)
+
     // const newTodoState = {
     //     newTodo: {
     //         taskName: "",
