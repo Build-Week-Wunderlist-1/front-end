@@ -21,7 +21,7 @@ const ToDoListContextProvider = (props) => {
 
     //Add Todo
     const addTodo = (title) => {
-        setTodos([...todos, { title, id: uuid() }])
+        setTodos([...todos, { title, id: Date.now() }])
     }
 
     // Remove todos
@@ -54,8 +54,8 @@ const ToDoListContextProvider = (props) => {
         <ToDoListContext.Provider value={{ todos, setTodos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
             {props.children}
             <ToDoList />
-            <ToDo />
-            <ToDoForm />
+            {/* <ToDo />
+            <ToDoForm /> */}
         </ToDoListContext.Provider>
     )
 }

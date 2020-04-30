@@ -10,13 +10,13 @@ const ToDo = ({ todo, props }) => {
 	return (
 		<div>
 			<li className="list-item">
-				{/* <span>{todo.title}</span> */}
+				<span>{todo.title}</span>
 				<div>
 					<button onClick={() => removeTodo(todo.id)} className="btn-delete-todo">Delete</button>
 					<button className="btn-edit-todo">Edit</button>
-					<button onClick={() => findItem(todo.id)} className="btn-edit todo-btn" onClick={() => findItem(todo.id)}>
-						<i className="fas fa-pen"></i>
-					</button>
+					{/* <button onClick={() => findItem(todo.id)} className="btn-edit todo-btn" onClick={() => findItem(todo.id)}>
+						<i className="fas fa-pen">hello</i>
+					</button> */}
 				</div>
 			</li>
 

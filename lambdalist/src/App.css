@@ -41,28 +41,28 @@ header {
   height: 60px;
 }
 
-ul {
+/* ul {
   display: flex;
   justify-content: row;
   justify-content: center;
   justify-content: space-around;
-}
+} */
 
-li {
+/* li {
   list-style: none;
   background-color: #611c35;
   width: 100px;
   border: solid black;
   border-radius: 25px;
-}
+} */
 
-li:hover {
+/* li:hover {
   background-color: #d7e8ba;
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
   transform: scale(0.8);
   color: black;
-}
+} */
 
 a:hover {
   color: black;

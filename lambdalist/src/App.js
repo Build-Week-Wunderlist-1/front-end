@@ -8,7 +8,7 @@ import Login from './components/Login';
 
 import ToDoList from './components/ToDoList';
 import ToDoListContextProvider from './ToDoListContext';
-import { ToDoListContext } from "./ToDoListContext"
+// import { ToDoListContext } from "./ToDoListContext"
 
 function App() {
   return (
@@ -18,7 +18,6 @@ function App() {
       <div className="App">
 
         <Switch>
-
           <Route path="/signup" component={SignUp} />
           <Route exact path="/" component={Login} />
           <ToDoListContextProvider>

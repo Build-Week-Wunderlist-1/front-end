@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import useForm from "./useForm";
 import Validate from "./Validate";
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
@@ -68,6 +69,7 @@ const SignUp = () => {
         </div>
         <button type="submit">Sign Up</button>
       </form>
+        Already have an account? <Link to="/">Log In</Link>
     </div>
   );
 };
