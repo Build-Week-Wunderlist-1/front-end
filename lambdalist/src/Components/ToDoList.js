@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import { ToDoListContext } from "../ToDoListContext"
 import ToDo from "./ToDo"
+import ToDoForm from "./ToDoForm";
 
 const ToDoList = (props) => {
   const { todos } = useContext(ToDoListContext);
@@ -10,16 +11,18 @@ const ToDoList = (props) => {
     axiosWithAuth()
       .get("/api/lists/")
       .then(res => {
-        // props.setTodos(res.data)
+        props.setTodos(res.data)
         console.log("TODOS:", res)
       })
+      .catch(err => (console.log("ERROR TO DISPLAY LIST OF DATA:", err)))
   })
-    .catch(err => (console.log("ERROR TO DISPLAY LIST OF DATA:", err)))
+
 
 
 
   return (
     <div>
+      <ToDoForm />
       {
         todos.length ? (
           <ul className="list">
@@ -31,6 +34,7 @@ const ToDoList = (props) => {
             <div className="no-todos">No todos</div>
           )
       }
+
     </div>
   );
 };

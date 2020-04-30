@@ -1,5 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
-import { uuid } from "react-uuid"
+import { uuid } from "react-uuid";
+import ToDoList from "./components/ToDoList";
+import ToDo from "./components/ToDo";
+import ToDoForm from "./components/ToDoForm"
+
 
 
 export const ToDoListContext = createContext()
@@ -49,6 +53,9 @@ const ToDoListContextProvider = (props) => {
     return (
         <ToDoListContext.Provider value={{ todos, setTodos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
             {props.children}
+            <ToDoList />
+            <ToDo />
+            <ToDoForm />
         </ToDoListContext.Provider>
     )
 }

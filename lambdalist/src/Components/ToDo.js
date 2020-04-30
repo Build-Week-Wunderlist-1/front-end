@@ -4,13 +4,13 @@ import { ToDoListContext } from "../ToDoListContext"
 
 
 
-const ToDo = ({ todo }) => {
+const ToDo = ({ todo, props }) => {
 	const { removeTodo, findItem } = useContext(ToDoListContext)
 
 	return (
 		<div>
 			<li className="list-item">
-				<span>{todo.title}</span>
+				{/* <span>{todo.title}</span> */}
 				<div>
 					<button onClick={() => removeTodo(todo.id)} className="btn-delete-todo">Delete</button>
 					<button className="btn-edit-todo">Edit</button>
