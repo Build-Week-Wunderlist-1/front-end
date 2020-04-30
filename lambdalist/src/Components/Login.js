@@ -21,8 +21,8 @@ const Login = () => {
 		axiosWithAuth()
 			.post('api/auth/login/', credentials)
 			.then((response) => {
-				console.log('Response --> ', response);
-				localStorage.setItem('token', JSON.stringify(response.data.payload));
+				console.log('Response from LOGIN --> ', response);
+				localStorage.setItem('token', JSON.stringify(response.data.token));
 				history.push('/protected');
 			})
 			.catch((error) => {

@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
     return axios.create({
         baseURL: 'https://lambdawunderlist.herokuapp.com/',
         headers: {
-            Authorization: token
+            Authorization: JSON.parse(token)
         }
     })
 } 

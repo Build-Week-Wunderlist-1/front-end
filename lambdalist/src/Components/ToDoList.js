@@ -6,26 +6,26 @@ import ToDoForm from "./ToDoForm";
 
 
 const ToDoList = (props) => {
-  const { todos } = useContext(ToDoListContext);
-  console.log("TODOS", todos)
+  const { todos, setTodos } = useContext(ToDoListContext);
+  console.log("TODOS from ToDoList:", todos)
 
   useEffect(() => {
     axiosWithAuth()
       .get("/api/lists/")
       .then(res => {
         console.log("TODOS:", res)
-        props.setTodos(res.data)
+        setTodos(res.data)
 
       })
       .catch(err => (console.log("ERROR TO DISPLAY LIST OF DATA:", err)))
-  })
+  }, [])
 
 
 
 
   return (
     <div>
-      {/* <ToDoListContext.Consumer> */}
+
       <ToDoForm />
       {
         todos.length ? (
@@ -38,7 +38,7 @@ const ToDoList = (props) => {
             <div className="no-todos">No todos</div>
           )
       }
-      {/* </ToDoListContext.Consumer> */}
+
     </div>
   );
 };

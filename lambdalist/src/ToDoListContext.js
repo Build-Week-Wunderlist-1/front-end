@@ -1,8 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
-import { uuid } from "react-uuid";
 import ToDoList from "./components/ToDoList";
-import ToDo from "./components/ToDo";
-import ToDoForm from "./components/ToDoForm"
+import { axiosWithAuth } from "./utils/axiosWithAuth"
 
 
 
@@ -11,9 +9,25 @@ export const ToDoListContext = createContext()
 const ToDoListContextProvider = (props) => {
     const initialState = JSON.parse(localStorage.getItem('todos')) || []
     const [todos, setTodos] = useState(initialState)
+    console.log("localStorage.getItem(token)", localStorage.getItem("token"))
 
     //edit Todo
-    const [editItem, setEditItem] = useState(null)
+    const [editItem, setEditItem] = useState(false)
+    const [todoToEdit, setTodoToEdit] = useState(initialState);
+
+
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get("/api/lists/")
+    //         .then(res => {
+    //             console.log("TODOS from GET LIST endpoint:", res.data)
+    //             setTodos(res.data)
+
+    //         })
+    //         .catch(err => (console.log("ERROR TO DISPLAY LIST OF DATA:", err)))
+    // }, [])
+
+
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
@@ -46,7 +60,7 @@ const ToDoListContextProvider = (props) => {
         console.log(newTodos)
 
         setTodos(newTodos)
-        setEditItem(null)
+        setEditItem(true)
     }
 
 
@@ -54,8 +68,7 @@ const ToDoListContextProvider = (props) => {
         <ToDoListContext.Provider value={{ todos, setTodos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
             {props.children}
             <ToDoList />
-            {/* <ToDo />
-            <ToDoForm /> */}
+
         </ToDoListContext.Provider>
     )
 }

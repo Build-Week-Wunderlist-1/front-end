@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 // import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 
