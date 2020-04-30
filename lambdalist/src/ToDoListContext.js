@@ -16,18 +16,6 @@ const ToDoListContextProvider = (props) => {
     const [todoToEdit, setTodoToEdit] = useState(initialState);
 
 
-    // useEffect(() => {
-    //     axiosWithAuth()
-    //         .get("/api/lists/")
-    //         .then(res => {
-    //             console.log("TODOS from GET LIST endpoint:", res.data)
-    //             setTodos(res.data)
-
-    //         })
-    //         .catch(err => (console.log("ERROR TO DISPLAY LIST OF DATA:", err)))
-    // }, [])
-
-
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))

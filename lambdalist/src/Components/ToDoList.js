@@ -31,7 +31,7 @@ const ToDoList = (props) => {
         todos.length ? (
           <ul className="list">
             {todos.map(todo => {
-              return <ToDo todo={todo} key={todo.id} />;
+              return <ToDo todo={todo} key={todo.id} keyTwo={todo.todo_id} />;
             })}
           </ul>
         ) : (
