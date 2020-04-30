@@ -5,22 +5,18 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const ToDoForm = (props) => {
-    const { clearList, editToDo, editItem, todos, setTodos } = useContext(ToDoListContext)
+    const { clearList, todos, setTodos } = useContext(ToDoListContext)
     const [title, setTitle] = useState('')
 
-
-
-
-
-    const handleChange = (e) => {
-        setTodos(
-            {
-                todos: {
-                    ...todos, [e.target.name]: e.target.value
-                }
-            }
-        )
+    const newTodoState = {
+        newTodo: {
+            taskName: "",
+        }
     }
+
+    // const handleChange = (e) => {
+    //     props.setTodos
+    // }
 
 
 
@@ -51,7 +47,7 @@ const ToDoForm = (props) => {
                 type="text"
                 placeholder="Add Todo..."
                 value={title}
-                onChange={handleChange}
+                // onChange={handleChange}
                 required
                 className="Todo-input"
             />
