@@ -17,11 +17,11 @@ const Login = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log('Login was pushed');
+		// console.log('Login was pushed');
 		axiosWithAuth()
 			.post('api/auth/login/', credentials)
 			.then((response) => {
-				console.log('Response from LOGIN --> ', response);
+				// console.log('Response from LOGIN --> ', response);
 				localStorage.setItem('token', JSON.stringify(response.data.token));
 				history.push('/protected');
 			})

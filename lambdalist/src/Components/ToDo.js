@@ -10,8 +10,8 @@ const ToDo = ({ todo }) => {
 	return (
 		<div>
 			<li className="list-item">
-				<span>{todo.taskName}</span>
-				<span>{todo.title}</span>
+				<span key={todo.id}>{todo.taskName}</span>
+				<span key={todo.todo_id}>{todo.title}</span>
 				<div>
 					<button onClick={() => removeTodo(todo.id)} className="btn-delete-todo">Delete</button>
 					<button className="btn-edit-todo">Edit</button>

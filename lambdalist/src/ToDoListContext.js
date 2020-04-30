@@ -22,9 +22,9 @@ const ToDoListContextProvider = (props) => {
     }, [todos])
 
     //Add Todo
-    const addTodo = (title) => {
-        setTodos([...todos, { title, id: Date.now() }])
-    }
+    // const addTodo = (title) => {
+    //     setTodos([...todos, { title, id: Date.now() }])
+    // }
 
     // Remove todos
     const removeTodo = id => {
@@ -53,7 +53,7 @@ const ToDoListContextProvider = (props) => {
 
 
     return (
-        <ToDoListContext.Provider value={{ todos, setTodos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
+        <ToDoListContext.Provider value={{ todos, setTodos, removeTodo, clearList, findItem, editItem, editTodo }}>
             {props.children}
             <ToDoList />
 
