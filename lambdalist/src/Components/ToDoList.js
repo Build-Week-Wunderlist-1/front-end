@@ -6,7 +6,7 @@ import ToDoForm from "./ToDoForm";
 
 
 const ToDoList = (props) => {
-  const { todos, setTodos } = useContext(ToDoListContext);
+  const { todos, setTodos } = useContext(ToDoListContext)
   console.log("TODOS from ToDoList:", todos)
 
   useEffect(() => {
