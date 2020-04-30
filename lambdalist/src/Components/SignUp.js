@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import useForm from "./useForm";
 import Validate from "./Validate";
 
 
 const SignUp = () => {
+
   const { handleChange, handleSubmit, values, errors } = useForm(
     submit,
     Validate
   ); // This deconstructs useForm and passes in the submit function as a callback.
 
   function submit() {
-    axios
-      .post("https://lambdawunderlist.herokuapp.com/api/auth/register", values)
+    // e.preventDefault();
+    axiosWithAuth()
+      .post("api/auth/register/", values)
       .then((res) => {
         console.log("Success!", res);
+        // history.push("/")
       })
       .catch((err) => {
         console.log(err.response);

@@ -47,7 +47,7 @@ const ToDoListContextProvider = (props) => {
 
 
     return (
-        <ToDoListContext.Provider value={{ todos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
+        <ToDoListContext.Provider value={{ todos, setTodos, addTodo, removeTodo, clearList, findItem, editItem, editTodo }}>
             {props.children}
         </ToDoListContext.Provider>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from "../Utils/axiosWithAuth"
+import { axiosWithAuth } from "../utils/axiosWithAuth"
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const history = useHistory();
@@ -52,6 +53,7 @@ const Login = () => {
 
 				<button type="submit">Log in</button>
 			</form>
+			  Don't have an account? <Link to="/signup">Sign Up</Link>
 		</div>
 	);
 };
