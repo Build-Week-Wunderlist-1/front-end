@@ -14,9 +14,9 @@ function App() {
     <Router>
       <ToDoListContextProvider>
         <div className="App">
-          <header>
-            {/* <NavBar /> */}
-          </header>
+          <header />
+
+
           <div className="main">
             <Route path="/signup" component={SignUp} />
             <Route exact path="/" component={Login} />
