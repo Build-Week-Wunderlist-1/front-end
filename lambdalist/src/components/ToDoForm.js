@@ -14,11 +14,9 @@ const ToDoForm = (props) => {
     // }
 
     const handleChange = (e) => {
-        props.setTodos({
-            newTodo: {
-                ...newTodo,
-                [e.target.name]: e.target.value
-            }
+        setTodos({
+            ...todos,
+            [e.target.name]: e.target.value
         })
     }
 
@@ -27,11 +25,11 @@ const ToDoForm = (props) => {
 
     const addItem = (e) => {
         axiosWithAuth()
-            .post(`/api/lists /${newTodo.id}`)
+            .post(`/api/lists /${todos.id}`)
             .then(res => {
                 console.log("New Todo added - res", res)
                 setTodos(
-                    [...todos]
+                    ...todos
                 )
                 props.history.push("/protected")
             }).catch(err => {
