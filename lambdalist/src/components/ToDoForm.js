@@ -1,50 +1,38 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { ToDoListContext } from "../ToDoListContext";
+import ToDoListContext from "../ToDoListContext";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 
 const ToDoForm = (props) => {
-    const { clearList, todos, setTodos, newTodo, setNewTodo, title, setTitle, } = useContext(ToDoListContext)
+    const { addTodo, clearList, editTodo, editItem } = useContext(ToDoListContext)
+    const [title, setTitle] = useState('')
 
-    // const newTodoState = {
-    //     newTodo: {
-    //         taskName: "",
-    //     }
-    // }
-
-    const handleChange = (e) => {
-        setTodos({
-            ...todos,
-            [e.target.name]: e.target.value
-        })
+    const handleSubmit = e => {
+        e.preventDefault()
+        if (!editItem) {
+            addTodo(title)
+            setTitle('')
+        } else {
+            editTodo(title, editItem.id)
+        }
     }
 
-
-
-
-    const addItem = (e) => {
-        axiosWithAuth()
-            .post(`/api/lists /${todos.id}`)
-            .then(res => {
-                console.log("New Todo added - res", res)
-                setTodos(
-                    ...todos
-                )
-                props.history.push("/protected")
-            }).catch(err => {
-                console.log("COULD NOT ADD NEW TODO - from ToDoForm", err)
-
-            })
+    const handleChange = e => {
+        setTitle(e.target.value)
     }
 
-
-
-
-
+    useEffect(() => {
+        if (editItem) {
+            setTitle(editItem.title)
+            console.log(editItem)
+        } else {
+            setTitle('')
+        }
+    }, [editItem])
 
     return (
-        <form className="form">
+        <form onSubmit={handleSubmit} className="form">
             <input
                 type="text"
                 placeholder="Add Todo..."
@@ -54,9 +42,8 @@ const ToDoForm = (props) => {
                 className="Todo-input"
             />
             <div className="buttons">
-                <button onClick={addItem} type="submit" className="add-Todo" >
-                    {/* {editItem ? 'Edit Todo' : 'Add Todo'} */}
-                    Add ITEM
+                <button type="submit" className="btn add-Todo-btn">
+                    {editItem ? 'Edit todo' : 'Add todo'}
                 </button>
                 <button className="btn clear-btn" onClick={clearList}>
                     Clear

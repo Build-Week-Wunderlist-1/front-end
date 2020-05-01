@@ -12,22 +12,25 @@ import ToDoListContextProvider from './ToDoListContext';
 
 function App() {
   return (
+
     <Router>
+      <ToDoListContextProvider>
 
-      <header />
-      <div className="App">
+        <header />
+        <div className="App">
 
-        <Switch>
-          <Route path="/signup" component={SignUp} />
-          <Route exact path="/" component={Login} />
-          <ToDoListContextProvider>
-            <PrivateRoute path="/ToDoList" component={ToDoList} />
-          </ToDoListContextProvider>
-        </Switch>
+          <Switch>
+            <Route path="/signup" component={SignUp} />
+            <Route exact path="/" component={Login} />
+            <ToDoListContextProvider>
+              <PrivateRoute path="/ToDoList" component={ToDoList} />
+            </ToDoListContextProvider>
+          </Switch>
 
-      </div>
-
+        </div>
+      </ToDoListContextProvider>
     </Router>
+
   );
 }
 
