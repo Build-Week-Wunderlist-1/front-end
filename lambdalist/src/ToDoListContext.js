@@ -1,45 +1,69 @@
-import React, { createContext, useState, useEffect } from "react";
-import ToDoList from "./components/ToDoList";
-import { axiosWithAuth } from "./utils/axiosWithAuth"
 
+import React, { createContext, useState, useEffect } from 'react'
+import ToDoList from "./components/ToDoList"
+// import uuid from 'uuid'
 
+export const TodoListContext = createContext()
 
-export const ToDoListContext = createContext()
-
-const ToDoListContextProvider = (props) => {
+const ToDoListContextProvider = props => {
     const initialState = JSON.parse(localStorage.getItem('todos')) || []
+
     const [todos, setTodos] = useState(initialState)
-
-
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
 
-    //Add Todo
-    // const addTodo = (title) => {
-    //     setTodos([...todos, { title, id: Date.now() }])
-    // }
+    const [editItem, setEditItem] = useState(null)
+
+    // Add todos
+    const addTodo = title => {
+        setTodos([...todos, { title, id: Date.now() }])
+    }
 
     // Remove todos
     const removeTodo = id => {
-        setTodos(todos.filter(todo => todo.id !== id))
+        setTodos(todos.filter(task => task.id !== id))
     }
 
-    //clearList 
+    // Clear todos
     const clearList = () => {
         setTodos([])
     }
 
+    // Find task
+    const findItem = id => {
+        const item = todos.find(task => task.id === id)
 
+        setEditItem(item)
+    }
 
+    // Edit task
+    const editTodo = (title, id) => {
+        const newTodos = todos.map(task => (task.id === id ? { title, id } : task))
+
+        console.log(newTodos)
+
+        setTodos(newTodos)
+        setEditItem(null)
+    }
 
     return (
-        <ToDoListContext.Provider value={{ todos, setTodos, removeTodo, clearList, }}>
+        <TodoListContext.Provider
+            value={{
+                // todos,
+                setTodos,
+                addTodo,
+                removeTodo,
+                clearList,
+                findItem,
+                editTodo,
+                editItem
+            }}
+        >
+            <ToDoList todos={todos} />
             {props.children}
-            <ToDoList />
-
-        </ToDoListContext.Provider>
+        </TodoListContext.Provider>
     )
 }
 

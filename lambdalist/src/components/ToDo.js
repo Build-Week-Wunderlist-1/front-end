@@ -1,28 +1,29 @@
 import React, { useContext } from 'react';
-import { ToDoListContext } from "../ToDoListContext"
-
+import ToDoListContext from "../ToDoListContext"
+import { axiosWithAuth } from "../utils/axiosWithAuth"
+import { useHistory } from "react-router-dom";
 
 
 
 const ToDo = ({ todo }) => {
-	const { removeTodo } = useContext(ToDoListContext)
-
+	const { removeTodo, findItem } = useContext(ToDoListContext)
 	return (
-		<div>
-			<li className="list-item">
-				<span key={todo.id}>{todo.taskName}</span>
-				<span key={todo.todo_id}>{todo.title}</span>
-				<div>
-					<button onClick={() => removeTodo(todo.id)} className="btn-delete-todo">Delete</button>
-					<button className="btn-edit-todo">Edit</button>
-					{/* <button onClick={() => findItem(todo.id)} className="btn-edit todo-btn" onClick={() => findItem(todo.id)}>
-						<i className="fas fa-pen">hello</i>
-					</button> */}
-				</div>
-			</li>
-
-		</div>
-	);
+		<li className="list-item">
+			<span>{todo.title} </span>
+			<span>{todo.taskName}</span>
+			<div>
+				<button
+					className="btn-delete todo-btn"
+					onClick={() => removeTodo(todo.id)}
+				>
+					<i className="fas fa-trash-alt"></i>
+				</button>{' '}
+				<button className="btn-edit todo-btn" onClick={() => findItem(todo.id)}>
+					<i className="fas fa-pen"></i>
+				</button>
+			</div>
+		</li>
+	)
 };
 
 export default ToDo;
