@@ -1,61 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import useForm from "./useForm";
+import Validate from "./Validate";
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from "../utils/axiosWithAuth"
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 const Login = () => {
-	const history = useHistory();
-
-	const [credentials, setCredentials] = useState({
-		username: '',
-		password: ''
-	});
-
-	const handleChange = (event) => {
-		setCredentials({ ...credentials, [event.target.name]: event.target.value });
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		// console.log('Login was pushed');
+  const { handleChange, handleSubmit, values, errors } = useForm(
+    submit,
+    Validate
+  ); // This deconstructs useForm and passes in the submit function as a callback.
+  const history = useHistory();
+  function submit() {
+		console.log('Login was pushed');
 		axiosWithAuth()
-			.post('api/auth/login/', credentials)
+			.post('api/auth/login/', values)
 			.then((response) => {
-				// console.log('Response from LOGIN --> ', response);
+				console.log('Response from LOGIN --> ', response);
 				localStorage.setItem('token', JSON.stringify(response.data.token));
 				history.push('/protected');
 			})
 			.catch((error) => {
 				console.log('Post error ', error);
-			});
-	};
-
-	return (
-		<div className="login-page">
-			<form onSubmit={handleSubmit}>
-				<label> Username </label>
-				<input
-					name="username"
-					type="text"
-					placeholder="username"
-					value={credentials.username}
-					onChange={handleChange}
-				/>
-
-				<label >Password </label>
-				<input
-					name="password"
-					type="password"
-					placeholder="password"
-					value={credentials.password}
-					onChange={handleChange}
-				/>
-
-				<button type="submit">Log in</button>
-			</form>
-			  Don't have an account? <Link to="/signup">Sign Up</Link>
-		</div>
-	);
+      })
+    };
+  return (
+    <div>
+      <form onSubmit={handleSubmit} noValidate>
+        <div>
+          <label>Username</label>
+          <div>
+            <input
+              name="username"
+              type="username"
+              onChange={handleChange}
+              value={values.username}
+            />
+            {errors.username && <p>{errors.username}</p>}
+          </div>
+        </div>
+        <div>
+          <label>Password</label>
+          <div>
+            <input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              value={values.password}
+            />
+            {errors.password && <p>{errors.password}</p>}
+          </div>
+        </div>
+        <button type="submit">Log in</button>
+      </form>
+      Don't have an account? <Link to="/signup">Sign Up</Link>
+    </div>
+  );
 };
-
 export default Login;
